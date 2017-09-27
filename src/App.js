@@ -4,7 +4,6 @@ import './App.css';
 import FlashCards from './components/FlashCards';
 
 class App extends Component {
-  state = { cards: [ {front: 'What is 1 + 1?', answer: '2'}]}
   render() {
     return (
       <div className="App">
@@ -12,7 +11,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Flash Cards</h2>
         </div>
-        <FlashCards cards={this.state.cards} />
+        <FlashCards />
       </div>
     );
   }

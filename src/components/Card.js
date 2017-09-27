@@ -1,39 +1,37 @@
 import React from 'react';
 
+
 class Card extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { flipped: false};
+    constructor(props){
+    super(props);
+    this.state = { showAnswer: false };
     }
 
+    displayBack = () => {
+        if (this.state.showAnswer)
+            return <div> Answer: {this.props.card.back } </div>
+    };
 
-    handleClick() {
-        this.state({flipped: true})
+    toggleCard = () => {
+        this.setState({ showAnswer: !this.state.showAnswer })
     }
-
-
-    // toggleCard = () => {
-    //     if (this.state.flipped)
-    //         return <div onClick={this.state.flipped}> {this.props.cardInfo.answer} </div>
-    //     else
-    //         return <div>{this.props.cardInfo.front}</div>
-
-    // }
 
     
 
     render() {
-        const flipped = this.state.flipped;
+        let { title, front, back } = this.props.card;
 
-        let button = null;
-        if (flipped) { button = < someFunction onClick={this.handleClick}/>} 
-            
+       
         
 
         return (
-           <div>
-                {flipped}
-            </div>
+            <div>
+                <h1> { title } </h1>
+                <hr />
+            <p>{ this.state.showAnswer === false ? front : null  }</p>
+            { this.displayBack() }
+            <button onClick={this.toggleCard}> Get Answer </button>
+           </div>
         );
     }
 }
